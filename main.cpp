@@ -9,6 +9,7 @@ int main(int argc, char* argv[]) {
 
     std::string result;
     std::string str;
+
     int key;
 
     if (strcmp(argv[1], "encryption") == 0) {

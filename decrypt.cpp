@@ -10,7 +10,6 @@ std::string decrypt(const std::string ciphertext, const size_t key) {
     srand(key);
 
     std::string dec_result;
-    std::cout << ciphertext << std::endl;
     std::vector<uint16_t> _16word_vector;
     size_t length = ciphertext.length();
     uint16_t _16word = 0;

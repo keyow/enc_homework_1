@@ -17,7 +17,7 @@ std::string encrypt(const std::string text, const size_t key) {
 
     for (size_t i = 0; i < length; ++i) {
         _16word = (_16word >> 8) | ((0x00 | text[i]) << 8);  // big endian
-        if (i % 2 == 1 || i == length - 1) {
+        if (i % 2 == 1) {
             _16word_vector.push_back(_16word);
             _16word = 0;
         }

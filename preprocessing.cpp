@@ -37,6 +37,10 @@ void align(std::string& line) {
 void get_data(std::string& text, int& key) {
     std::cout << "Enter text: " << std::endl;
     std::getline(std::cin, text);
+    if(text.empty()) {
+        std::cerr << "Error: line is empty" << std::endl;
+        exit(-1);
+    }
 
     std::string key_str;
     std::cout << "Enter key (integer): " <<std::endl;
@@ -44,7 +48,7 @@ void get_data(std::string& text, int& key) {
     if (isnumber(key_str)) {
         key = std::stoi(key_str);
     } else {
-        std::cerr << "Error: key is not a number" << std::endl;
+        std::cerr << "Error: key is not a positive number" << std::endl;
         exit(-1);
     }
 }
@@ -54,6 +58,9 @@ void get_data(std::string& text, int& key, const std::string filename) {
     std::ifstream file(filename);
     if (file.is_open()) {
         std::getline(file, text);
+    } else {
+        std::cerr << "Error: can't open file";
+        exit(-1);
     }
 
     std::string key_str;
