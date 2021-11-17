@@ -18,6 +18,7 @@ int main(int argc, char* argv[]) {
         result = encrypt(str, key);
         std::ofstream f(argv[2]);
         f << result;
+        f.close();
     } else if (strcmp(argv[1], "decryption") == 0) {
         get_data(str, key, argv[2]);
         align(str);
