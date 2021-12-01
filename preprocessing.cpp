@@ -15,18 +15,6 @@ void help(const std::string error, const std::string program_name) {
 }
 
 
-bool isnumber(const std::string text) {
-    bool result = true;
-    for (const auto s : text) {
-        if (!isdigit(s)) {
-            result = false;
-            break;
-        }
-    }
-    return result;
-}
-
-
 void align(std::string& line) {
     if (line.length() % 2 == 1) {
         line += '\x00';
@@ -45,11 +33,8 @@ void get_data(std::string& text, int& key) {
     std::string key_str;
     std::cout << "Enter key (integer): " <<std::endl;
     std::cin >> key_str;
-    if (isnumber(key_str)) {
-        key = std::stoi(key_str);
-    } else {
-        std::cerr << "Error: key is not a positive number" << std::endl;
-        exit(-1);
+    for (const char& c : key_str) {
+        key = (key + static_cast<int> (c)) % 65536;
     }
 }
 
@@ -66,10 +51,7 @@ void get_data(std::string& text, int& key, const std::string filename) {
     std::string key_str;
     std::cout << "Enter key (integer): " <<std::endl;
     std::cin >> key_str;
-    if (isnumber(key_str)) {
-        key = std::stoi(key_str);
-    } else {
-        std::cerr << "Error: key is not a number" << std::endl;
-        exit(-1);
+    for (const char& c : key_str) {
+        key = (key + static_cast<int> (c)) % 65536;
     }
 }
