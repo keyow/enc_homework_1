@@ -4,7 +4,7 @@
 #include <string>
 #include <fstream>
 
-void help(const std::string error, const std::string program_name) {
+void help(const std::string& error, const std::string& program_name) {
     std::cerr << "Error: " << error << std::endl;
     std::cout << std::endl;
     std::cout << program_name << " usage:" << std::endl;
@@ -31,7 +31,7 @@ void get_data(std::string& text, int& key) {
     }
 
     std::string key_str;
-    std::cout << "Enter key (integer): " <<std::endl;
+    std::cout << "Enter key: " <<std::endl;
     std::cin >> key_str;
     for (const char& c : key_str) {
         key = (key + static_cast<int> (c)) % 65536;
@@ -39,7 +39,7 @@ void get_data(std::string& text, int& key) {
 }
 
 
-void get_data(std::string& text, int& key, const std::string filename) {
+void get_data(std::string& text, int& key, const std::string& filename) {
     std::ifstream file(filename);
     if (file.is_open()) {
         std::getline(file, text);
@@ -49,7 +49,7 @@ void get_data(std::string& text, int& key, const std::string filename) {
     }
 
     std::string key_str;
-    std::cout << "Enter key (integer): " <<std::endl;
+    std::cout << "Enter key: " <<std::endl;
     std::cin >> key_str;
     for (const char& c : key_str) {
         key = (key + static_cast<int> (c)) % 65536;

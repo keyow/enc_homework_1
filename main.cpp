@@ -1,7 +1,6 @@
 #include "header.h"
 
 int main(int argc, char* argv[]) {
-
     if (argc != 3) {
         help("Need 2 arguments", argv[0]);
         exit(-1);
@@ -21,14 +20,12 @@ int main(int argc, char* argv[]) {
         f.close();
     } else if (strcmp(argv[1], "decryption") == 0) {
         get_data(str, key, argv[2]);
-        align(str);
         result = decrypt(str, key);
-        std::cout << result << std::endl;
     } else {
         help("Wrong mode", argv[0]);
         exit(-1);
     }
 
-
+    std::cout << result << std::endl;
     return 0;
 }
